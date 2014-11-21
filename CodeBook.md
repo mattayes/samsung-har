@@ -125,7 +125,7 @@ Class: Factor (Unordered)
 
 Values:
 * "mean"
-* "std" = Standard deviation
+* "std": Standard deviation
 
 ***
 
