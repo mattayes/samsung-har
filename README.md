@@ -19,6 +19,7 @@ The repo includes the following files:
 ***
 
 'run_analysis' follows these general steps:
+
 1. Read in data
 2. Merge test and train data into one data frame
 3. Subset mean and standard deviation measurements
