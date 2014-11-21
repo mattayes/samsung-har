@@ -1,15 +1,6 @@
 ## Packages used
 library(dplyr); library(tidyr)
 
-## Download data
-if(!file.exists("./data")){
-	dir.create("./data")
-	fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-	download.file(fileUrl, destfile = "./data/zip.zip", method = "curl")
-	rm(fileUrl)
-	unzip("./data/zip.zip", exdir = "./data")
-}
-
 ## Read data
 options("stringsAsFactors" = FALSE)
 features <- read.table("./data/UCI Har Dataset/features.txt")
@@ -24,29 +15,29 @@ train.measures <- read.table("./data/UCI HAR Dataset/train/X_train.txt")
 ## Merge test and train data
 test <- data.frame(test.subject, test.activity, test.measures)
 train <- data.frame(train.subject, train.activity, train.measures)
-raw <- rbind(test, train)
+samsung <- rbind(test, train)
 
 ## Add column names
 features <- features$V2
-names(raw) <- c("subject", "activity", features)
+names(samsung) <- c("subject", "activity", features)
 
-## Convert activity to all lower-case
+## Translate activity to all lower-case
 activity <- activity$V2
 activity <- tolower(activity)
 
 ## Convert activity and subject to factors
-raw$activity <- factor(raw$activity, labels = activity)
-raw$subject <- factor(raw$subject, ordered = FALSE)
+samsung$activity <- factor(samsung$activity, labels = activity)
+samsung$subject <- factor(samsung$subject, ordered = FALSE)
 
-## Subset mean() and sd() from samsung
-mean <- grep("mean[^F]", names(raw))
-std <- grep("std", names(raw))
+## Subset mean() and std() from samsung
+mean <- grep("mean[^F]", names(samsung))
+std <- grep("std", names(samsung))
 criteria <- c(mean, std)
-samsung <- raw[, c(1:2, criteria)]
+samsung <- samsung[, c(1:2, criteria)]
 
 ## Clear memory of unnecessry objects
 rm(features, activity, test.subject, test.activity, test.measures, train.subject,
-   train.activity, train.measures, test, train, raw, mean, std, criteria)
+   train.activity, train.measures, test, train, mean, std, criteria)
 
 ## Convert samsung to a tbl_df object
 samsung <- tbl_df(samsung)
@@ -58,17 +49,21 @@ for(i in index){
         names(samsung)[i] <- paste(names(samsung)[i], "all", sep = "-")
 }
 rm(index, i)
-## Gather variables into feature, summary, direction, and measure variables
+## Gather variables and separate into feature, summary, direction, and measure
 samsung <- samsung %>%
-        gather(demo, measure, -subject, -activity)
-samsung <- samsung %>%
+        gather(demo, measure, -subject, -activity) %>%
         separate(demo, c("feature", "summary", "axis"), sep = "-")
 
 ## Convert feature, summary, and direction to factors
 samsung <- samsung %>%
         mutate(feature = factor(feature),
-                summary = factor(summary, labels = c("mean", "std")), 
+               summary = factor(summary, labels = c("mean", "std")), 
                axis = factor(tolower(axis)))
+
+## Write samsung to file
+if(!file.exists("./samsung.txt")){
+        write.table(samsung, "./samsung.txt", row.name = FALSE)
+}
 
 ## Summarize samsung by average of each summary for each direction, 
 ## each feature, each activity, and each subject.
@@ -77,4 +72,6 @@ summarized <- samsung %>%
         summarize(average = mean(measure))
 
 ## Write summ to file
-write.table(summarized, "./summarized.txt", row.name = FALSE)
+if(!file.exists("./summarized.txt")){
+        write.table(summarized, "./summarized.txt", row.name = FALSE)
+}
