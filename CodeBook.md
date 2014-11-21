@@ -15,27 +15,37 @@ The codebook is structured using the following format:
 
 ###### Variable
 Description: An outline of what the variable measures
-Source: The file(s) from the raw dataset which contributed to creating the variable
+
+Source: The file(s) from the raw dataset which 
+contributed to creating the variable
+
 Class: the class of the object
+
 Values: the range of observations
 ###
 
 ###### subject
 Description: Subject who performed the activity
+
 Source:
 * "test/subject_test.txt"
 * "train/subject_train.txt"
+
 Class: Factor (Unordered)
+
 Values: 1:30
 ###
 
 ###### activity
 Description: Action being performed by the subject
+
 Source:
 * "activity_labels.txt"
 * "test/y_test.txt"
 * "train/y_train.txt"
+
 Class: Factor (Unordered)
+
 Values:
 * "walking"
 * "walking_upstairs"
@@ -49,11 +59,14 @@ Values:
 Description: Domain signals for accelerometer and gyroscope measurements. feature names contain two parts:
 1. Domain Signal Type: Either 't' for time domain signal or 'f' for frequency domain signal
 2. Signal: What is being measured
+
 Source:
 * "features.txt"
 * "test/X_test.txt"
 * "train/X_train.txt"
+
 Class: Factor (Unordered)
+
 Values:
 * "fBodyAcc": Frequency body acceleration
 * "fBodyAccJerk": Frequency body acceleration jerk
@@ -76,11 +89,14 @@ Values:
 
 ###### axis
 Description: The axis on which the feature is measured
+
 Source:
 * "features.txt"
 * "test/X_test.txt"
 * "train/X_train.txt"
+
 Class: Factor (Unordered)
+
 Values:
 * "x"
 * "y"
@@ -90,20 +106,26 @@ Values:
 
 ###### summary
 Description: Summary statistic
+
 Source:
 * "features.txt"
 * "test/X_test.txt"
 * "train/X_train.txt"
+
 Class: Factor (Unordered)
+
 Values:
 * "mean"
 * "std" = Standard deviation
 ***
 
 ###### average
-Class: Numeric
+Description: Mean of all records matching variables of that row
+
 Source:
 * "test/X_test.txt"
 * "train/X_train.txt"
-Description: Mean of all records matching variables of that row
+
+Class: Numeric
+
 Values: Bounded between [-1, 1]
