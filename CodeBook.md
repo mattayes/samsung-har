@@ -6,10 +6,12 @@ The script "run_analysis.R" takes the raw dataset found [here](https://d396qusza
 
 For the purposes of this codebook, only information regarding "summarized.txt" will be included.
 
+
 I chose two create a tall dataset. I accomplished this by splitting the original "features.txt" observations along the "-" character into three variables:
 * features
 * axis
 * summary
+
 
 The codebook is structured using the following format:
 
@@ -22,7 +24,8 @@ contributed to creating the variable
 Class: the class of the object
 
 Values: the range of observations
-###
+
+***
 
 ###### subject
 Description: Subject who performed the activity
@@ -34,7 +37,8 @@ Source:
 Class: Factor (Unordered)
 
 Values: 1:30
-###
+
+***
 
 ###### activity
 Description: Action being performed by the subject
@@ -53,7 +57,8 @@ Values:
 * "sitting"
 * "standing"
 * "laying"
-###
+
+***
 
 ###### feature
 Description: Domain signals for accelerometer and gyroscope measurements. feature names contain two parts:
@@ -85,7 +90,8 @@ Values:
 * "tBodyGyroMag": Time body gyroscope magnitude
 * "tGravityAcc": Time gravity acceleration
 * "tGravityAccMag": Time gravity acceleration magnitude
-###
+
+***
 
 ###### axis
 Description: The axis on which the feature is measured
@@ -102,6 +108,7 @@ Values:
 * "y"
 * "z"
 * "all": Stand-in for magnitude features
+
 ***
 
 ###### summary
@@ -117,6 +124,7 @@ Class: Factor (Unordered)
 Values:
 * "mean"
 * "std" = Standard deviation
+
 ***
 
 ###### average
