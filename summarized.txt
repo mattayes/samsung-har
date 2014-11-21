@@ -1,4 +1,4 @@
-"subject" "activity" "feature" "direction" "summary" "average"
+"subject" "activity" "feature" "axis" "summary" "average"
 "1" "walking" "fBodyAcc" "x" "mean" -0.202794306326316
 "1" "walking" "fBodyAcc" "x" "std" -0.319134719578947
 "1" "walking" "fBodyAcc" "y" "mean" 0.0897127264021053

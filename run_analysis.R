@@ -62,18 +62,18 @@ rm(index, i)
 samsung <- samsung %>%
         gather(demo, measure, -subject, -activity)
 samsung <- samsung %>%
-        separate(demo, c("feature", "summary", "direction"), sep = "-")
+        separate(demo, c("feature", "summary", "axis"), sep = "-")
 
 ## Convert feature, summary, and direction to factors
 samsung <- samsung %>%
         mutate(feature = factor(feature),
                 summary = factor(summary, labels = c("mean", "std")), 
-               direction = factor(tolower(direction)))
+               axis = factor(tolower(axis)))
 
 ## Summarize samsung by average of each summary for each direction, 
 ## each feature, each activity, and each subject.
 summarized <- samsung %>%
-        group_by(subject, activity, feature, direction, summary) %>%
+        group_by(subject, activity, feature, axis, summary) %>%
         summarize(average = mean(measure))
 
 ## Write summ to file
