@@ -6,24 +6,26 @@ The script "run_analysis.R" takes the raw dataset found [here](https://d396qusza
 
 For the purposes of this codebook, only information regarding "summarized.txt" will be included.
 
+***
 
 I chose two create a tall dataset. I accomplished this by splitting the original "features.txt" observations along the "-" character into three variables:
 * features
 * axis
 * summary
 
+***
 
 The codebook is structured using the following format:
 
 ###### Variable
-Description: An outline of what the variable measures
+Description: Outline of what the variable measures
 
-Source: The file(s) from the raw dataset which 
+Source: File(s) from the raw dataset which 
 contributed to creating the variable
 
-Class: the class of the object
+Class: Class of the variable
 
-Values: the range of observations
+Values: Range of observations
 
 ***
 
