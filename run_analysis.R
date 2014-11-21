@@ -1,6 +1,15 @@
 ## Packages used
 library(dplyr); library(tidyr)
 
+## Download data
+if(!file.exists("./data")){
+        dir.create("./data")
+        fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+        download.file(fileUrl, destfile = "./data/zip.zip", method = "curl")
+        rm(fileUrl)
+        unzip("./data/zip.zip", exdir = "./data")
+}
+
 ## Read data
 options("stringsAsFactors" = FALSE)
 features <- read.table("./data/UCI Har Dataset/features.txt")
