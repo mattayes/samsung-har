@@ -9,6 +9,6 @@ The repo includes the following files:
 * 'data/': Original dataset (README included)
 * 'README.md'
 * 'CodeBook.md'
-* 'run_analysis.R': Dcript for obtaining the tidy datasets.
+* 'run_analysis.R': Script for obtaining the tidy datasets.
 * 'samsung.txt': Tidy dataset before grouping and averaging
 * 'summarized.txt': Tidy dataset after grouping and averaging
