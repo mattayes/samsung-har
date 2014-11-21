@@ -1,6 +1,6 @@
 # CodeBook.md
 
-The script "run_analysis.R" takes the raw dataset found [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and creates two tidy datasets:
+The script "run_analysis.R" takes the [raw dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and creates two tidy datasets:
 * "samsung.txt": Before grouping and averaging
 * "summarized.txt": After grouping and averaging
 
